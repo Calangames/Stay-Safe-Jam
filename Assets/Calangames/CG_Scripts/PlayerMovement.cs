@@ -5,8 +5,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour {
 
     public float playerSpeed;
-    public float shipSpeed;
     public float jumpForce;
+
+    public Transform cameraPivot;
+    private float cameraDirection;
 
     public CharacterController playerController;
 
@@ -21,6 +23,10 @@ public class PlayerMovement : MonoBehaviour {
     void Update()
     {
         moveDirection = new Vector3(Input.GetAxis("Horizontal") * playerSpeed, moveDirection.y, Input.GetAxis("Vertical") * playerSpeed);
+
+        cameraDirection = cameraPivot.eulerAngles.y;
+
+        moveDirection = Quaternion.AngleAxis(cameraDirection, Vector3.up) * moveDirection;
 
         if (playerController.isGrounded)
         {
