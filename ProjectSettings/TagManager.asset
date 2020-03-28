@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Gary
   layers:
   - Default
   - TransparentFX
@@ -14,9 +15,9 @@ TagManager:
   - 
   - 
   - Post Processing
-  - 
-  - 
-  - 
+  - GaryBodyOnGround
+  - GaryBodyOnAir
+  - Gary Detector
   - 
   - 
   - 
