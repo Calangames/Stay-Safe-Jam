@@ -13,7 +13,7 @@ public class Gary : MonoBehaviour
 
     private Vector3 moveDirection;
     private Vector2 position;
-    private bool headTowardsCenter, linked = true, grounded;
+    private bool headTowardsCenter, linked = true, grounded, followingCrowd;
     
     void Start ()
     {
@@ -22,8 +22,10 @@ public class Gary : MonoBehaviour
 
     void Update()
     {
-        moveDirection = new Vector3(Input.GetAxis("Horizontal") * playerSpeed, moveDirection.y, Input.GetAxis("Vertical") * playerSpeed);
-                
+        if (followingCrowd)
+        {
+            moveDirection = new Vector3(Input.GetAxis("Horizontal") * playerSpeed, moveDirection.y, Input.GetAxis("Vertical") * playerSpeed);
+        }
         if (grounded)
         {
             gameObject.layer = 9; //GaryBodyOnGround
@@ -43,16 +45,19 @@ public class Gary : MonoBehaviour
 
     void LateUpdate()
     {
-        position = new Vector2(transform.position.x, transform.position.z);
-        float distance = Vector2.Distance(position, Crowd.instance.Center);
-        linked = linked & distance <= Crowd.instance.maxDistance;
-        headTowardsCenter = distance > Crowd.instance.minDistance && !linked;
-
-        if (headTowardsCenter)
+        if (followingCrowd)
         {
-            Vector2 centerDirection = new Vector2(Crowd.instance.Center.x - transform.position.x, Crowd.instance.Center.y - transform.position.z);
-            centerDirection = centerDirection.normalized;
-            moveDirection = new Vector3(centerDirection.x * runSpeed, moveDirection.y, centerDirection.y * runSpeed);
+            position = new Vector2(transform.position.x, transform.position.z);
+            float distance = Vector2.Distance(position, Crowd.instance.Center);
+            linked = linked & distance <= Crowd.instance.maxDistance;
+            headTowardsCenter = distance > Crowd.instance.minDistance && !linked;
+
+            if (headTowardsCenter)
+            {
+                Vector2 centerDirection = new Vector2(Crowd.instance.Center.x - transform.position.x, Crowd.instance.Center.y - transform.position.z);
+                centerDirection = centerDirection.normalized;
+                moveDirection = new Vector3(centerDirection.x * runSpeed, moveDirection.y, centerDirection.y * runSpeed);
+            }
         }
         characterController.Move(moveDirection * Time.deltaTime);
     }
@@ -64,6 +69,20 @@ public class Gary : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        linked = Vector2.Distance(position, Crowd.instance.Center) <= Crowd.instance.maxDistance;
+        float distance = Vector2.Distance(position, Crowd.instance.Center);
+        linked = distance <= Crowd.instance.maxDistance;
+        if (other.CompareTag("Crowd"))
+        {
+            Crowd.instance.CrowdList.Add(transform);
+            followingCrowd = true;
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (followingCrowd && other.CompareTag("Crowd"))
+        {
+            Crowd.instance.CrowdList.Remove(transform);
+        }
     }
 }
