@@ -7,9 +7,9 @@ public class CameraController : MonoBehaviour
     private Transform cameraTransform;
     private Transform pivotTransform;
 
-    private Vector3 cameraRotation = new Vector3(0, 45, 0);
+    private Vector3 cameraRotation = new Vector3(0, 50, 0);
 
-    private float cameraDistance = 20f;
+    private float cameraDistance = 25f;
 
     public float mouseSensitivity = 4f;
     public float scrollSensitivity = 2f;
