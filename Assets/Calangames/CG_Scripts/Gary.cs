@@ -36,10 +36,13 @@ public class Gary : MonoBehaviour
 
             moveDirection = Quaternion.AngleAxis(cameraDirection, Vector3.up) * moveDirection;
             moveDirection.y = y;
+            if (characterController.isGrounded)
+            {
+                moveDirection.y = 0f;
+            }
             if (grounded)
             {
                 gameObject.layer = 9; //GaryBodyOnGround
-                //moveDirection.y = 0f;
                 if (Input.GetButtonDown("Jump"))
                 {
                     grounded = false;

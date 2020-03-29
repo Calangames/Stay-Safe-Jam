@@ -7,9 +7,9 @@ public class CameraController : MonoBehaviour
     private Transform cameraTransform;
     private Transform pivotTransform;
 
-    private Vector3 cameraRotation;
+    private Vector3 cameraRotation = new Vector3(0, 45, 0);
 
-    private float cameraDistance = 10f;
+    private float cameraDistance = 20f;
 
     public float mouseSensitivity = 4f;
     public float scrollSensitivity = 2f;
@@ -23,6 +23,8 @@ public class CameraController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         cameraTransform = transform;
         pivotTransform = transform.parent;
+
+
     }
 
     void LateUpdate()
