@@ -18,7 +18,47 @@ ModelImporter:
   - first:
       74: -1583290146420158882
     second: arm-Trash|runTrash
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Blue
+    second: {fileID: 2100000, guid: 61e1cfa1ab6aed1468bd9af444fad03f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Body
+    second: {fileID: 2100000, guid: 3afb897c956e0c4439dfc364ddca7380, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cavity
+    second: {fileID: 2100000, guid: 8984eaed7cbc7d14b8daab4d92a5c184, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DarkGreen
+    second: {fileID: 2100000, guid: 463b036d5506624489b179fec9fa4bef, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Green_
+    second: {fileID: 2100000, guid: d78127694c0542d428750fe93630ad82, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: cc1aa4572721fb14d93679a7c051f5b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.003
+    second: {fileID: 2100000, guid: e20c5e9ad1f83c4439340d6834b4b578, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.004
+    second: {fileID: 2100000, guid: aa326910e649d7d4ba6b03d918f29190, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

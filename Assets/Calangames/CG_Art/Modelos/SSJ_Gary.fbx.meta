@@ -15,7 +15,12 @@ ModelImporter:
   - first:
       74: 7774806637083022922
     second: Arm-Cleaner|runAnima
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WhiteMat
+    second: {fileID: 2100000, guid: ddcbe66ab83979c4face39b152dbe5fb, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

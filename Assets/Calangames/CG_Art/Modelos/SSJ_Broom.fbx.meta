@@ -15,7 +15,17 @@ ModelImporter:
   - first:
       74: 1071739941601089020
     second: Arm-Broom|TPose
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Brown.001
+    second: {fileID: 2100000, guid: 3ab91d45c429d09459e1bcee8e04b3aa, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Green.001
+    second: {fileID: 2100000, guid: 9f84e2cdcf38dff4ab0f82d6f3dda9b9, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
