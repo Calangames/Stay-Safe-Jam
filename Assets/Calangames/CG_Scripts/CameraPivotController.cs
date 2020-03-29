@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class CameraPivotController : MonoBehaviour
 {
-    public GameObject player;
-
     void LateUpdate()
     {
-        transform.position = player.transform.position;
+        transform.position = Crowd.instance.transform.position;
     }
 }

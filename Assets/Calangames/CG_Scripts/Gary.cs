@@ -72,7 +72,8 @@ public class Gary : MonoBehaviour
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        grounded = hit.normal.y > 0 && !hit.gameObject.CompareTag("Gary");
+        bool notHuggingWall = hit.normal.x > -0.2f && hit.normal.x < 0.2f && hit.normal.z > -0.2f && hit.normal.z < 0.2f;
+        grounded = notHuggingWall && hit.normal.y > 0 && !hit.gameObject.CompareTag("Gary");
     }
 
     void OnTriggerEnter(Collider other)
