@@ -46,9 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 10
-  minDistance: 1
-  maxDistance: 4
-  recenterDuration: 0.5
+  minDistance: 2
+  maxDistance: 5
+  recenterDuration: 0.2
+  cameraPivot: {fileID: 0}
 --- !u!135 &2062548180541746983
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -60,7 +61,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &2062548180541746982
 SphereCollider:
@@ -73,7 +74,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 4
+  m_Radius: 5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3714646994430984850
 GameObject:
@@ -247,7 +248,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 1.2
+  m_Radius: 1.6
   m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}

@@ -14,7 +14,8 @@ public class Gary : MonoBehaviour
     private Vector3 moveDirection;
     private Vector2 position;
     private bool headTowardsCenter, linked = true, grounded, followingCrowd;
-    
+    private float cameraDirection;
+
     void Start ()
     {
         characterController = GetComponent<CharacterController>();
@@ -24,22 +25,29 @@ public class Gary : MonoBehaviour
     {
         if (followingCrowd)
         {
-            moveDirection = new Vector3(Input.GetAxis("Horizontal") * playerSpeed, moveDirection.y, Input.GetAxis("Vertical") * playerSpeed);
-        }
-        if (grounded)
-        {
-            gameObject.layer = 9; //GaryBodyOnGround
-            //moveDirection.y = 0f;
-            if (Input.GetButtonDown("Jump"))
+            float y = moveDirection.y;
+            moveDirection = new Vector3(Input.GetAxis("Horizontal") * playerSpeed, 0f, Input.GetAxis("Vertical") * playerSpeed);
+
+            cameraDirection = Crowd.instance.cameraPivot.eulerAngles.y;
+
+            moveDirection = Quaternion.AngleAxis(cameraDirection, Vector3.up) * moveDirection;
+            moveDirection.y = y;
+            if (grounded)
             {
-                grounded = false;
-                moveDirection.y = jumpForce;
+                gameObject.layer = 9; //GaryBodyOnGround
+                //moveDirection.y = 0f;
+                if (Input.GetButtonDown("Jump"))
+                {
+                    grounded = false;
+                    moveDirection.y = jumpForce;
+                }
+            }
+            else
+            {
+                gameObject.layer = 10; //GaryBodyOnAir
             }
         }
-        else
-        {
-            gameObject.layer = 10; //GaryBodyOnAir
-        }
+
         moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale * Time.deltaTime);
     }
 
@@ -80,7 +88,7 @@ public class Gary : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (followingCrowd && other.CompareTag("Crowd"))
+        if (followingCrowd && other.CompareTag("Crowd") && Crowd.instance.CrowdList.Count > 1)
         {
             Crowd.instance.CrowdList.Remove(transform);
         }
