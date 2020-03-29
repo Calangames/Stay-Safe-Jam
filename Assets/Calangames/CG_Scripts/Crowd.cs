@@ -6,6 +6,7 @@ public class Crowd : MonoBehaviour
 {
     public float playerSpeed =10f;
     public float minDistance = 2f, maxDistance = 5f, recenterDuration = 0.5f;
+    public Transform cameraPivot;
 
     public static Crowd instance;
 
@@ -13,6 +14,8 @@ public class Crowd : MonoBehaviour
     public List<Transform> CrowdList { get; set; }
 
     private Vector3 velocity;
+    private Vector3 moveDirection;
+    private float cameraDirection;
 
     void Awake()
     {
@@ -38,9 +41,18 @@ public class Crowd : MonoBehaviour
             }
             center /= CrowdList.Count;
             Vector3 smoothedCenter = Vector3.SmoothDamp(transform.position, center, ref velocity, recenterDuration);
-            newPosition = (new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")) * playerSpeed * Time.deltaTime) + smoothedCenter;
+
+
+            moveDirection = new Vector3(Input.GetAxis("Horizontal") * playerSpeed * Time.deltaTime, moveDirection.y, Input.GetAxis("Vertical") * playerSpeed * Time.deltaTime);
+
+            cameraDirection = cameraPivot.eulerAngles.y;
+
+            moveDirection = Quaternion.AngleAxis(cameraDirection, Vector3.up) * moveDirection;
+
+
+            newPosition = moveDirection + smoothedCenter;
         }
-        else
+        else 
         {
             newPosition = (new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")) * playerSpeed * Time.deltaTime) + transform.position;
         }        
