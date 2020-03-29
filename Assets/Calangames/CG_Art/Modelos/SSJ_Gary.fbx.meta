@@ -1,32 +1,41 @@
 fileFormatVersion: 2
-guid: 2db26aedc23828848bbe6da58c561911
+guid: 80b18d1d87a2e834c8141d735608e64b
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable:
   - first:
+      74: 7263320050364773249
+    second: Arm-Gary|Arm-Gary.001|Arm-Gary|cleanAnim|Arm-Gary|cleanAnim
+  - first:
+      74: -7770679593177792345
+    second: Arm-Gary|Arm-Gary.001|Arm-Gary|deathAnim|Arm-Gary|deathAnim
+  - first:
+      74: -1839072425757150503
+    second: Arm-Gary|Arm-Gary.001|Arm-Gary|IdleAnim|Arm-Gary|IdleAnim
+  - first:
+      74: -1577525877090430774
+    second: Arm-Gary|Arm-Gary.001|Arm-Gary|jumpAnim|Arm-Gary|jumpAnim
+  - first:
+      74: 3736846361869578779
+    second: Arm-Gary|Arm-Gary.001|Arm-Gary|PlaneAction|Arm-Gary|PlaneAction
+  - first:
+      74: 7464711720022546524
+    second: Arm-Gary|Arm-Gary.001|Arm-Gary|runAnima|Arm-Gary|runAnima
+  - first:
+      74: 6303706236440269969
+    second: Arm-Gary|Arm-Gary.001|Arm-Gary|TPose|Arm-Gary|TPose
+  - first:
       74: 4776126667634646051
     second: Arm-Gary|cleanAnim
   - first:
-      74: 4988178750407703544
-    second: Arm-Gary|deathAnim
-  - first:
-      74: 2166892880501188634
-    second: Arm-Gary|IdleAnim
-  - first:
-      74: -8741845760594162074
-    second: Arm-Gary|jumpAnim
-  - first:
-      74: -7219769206822542389
-    second: Arm-Gary|PlaneAction
-  - first:
-      74: -4561671890860197871
-    second: Arm-Gary|runAnima
-  - first:
-      74: -2003948356396199795
-    second: Arm-Gary|TPose
+      74: 5933985077627614047
+    second: Arm-Gary|deathAnima
   - first:
       74: 1769408565536515105
     second: Arm-Gary|fallingAnim
+  - first:
+      74: 2166892880501188634
+    second: Arm-Gary|IdleAnim
   - first:
       74: 5089151977813665328
     second: Arm-Gary|JumpAnim
@@ -39,6 +48,12 @@ ModelImporter:
   - first:
       74: -1527683478413793485
     second: Arm-Gary|landingAnim.001
+  - first:
+      74: -4561671890860197871
+    second: Arm-Gary|runAnima
+  - first:
+      74: -2003948356396199795
+    second: Arm-Gary|TPose
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -66,210 +81,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: Arm-Gary|cleanAnim
-      takeName: Arm-Gary|cleanAnim
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 40
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Arm-Gary|deathAnim
-      takeName: Arm-Gary|deathAnim
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 89
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Arm-Gary|IdleAnim
-      takeName: Arm-Gary|IdleAnim
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 151
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Arm-Gary|jumpAnim
-      takeName: Arm-Gary|jumpAnim
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 30
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Arm-Gary|PlaneAction
-      takeName: Arm-Gary|PlaneAction
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 1
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Arm-Gary|runAnima
-      takeName: Arm-Gary|runAnima
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 40
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Arm-Gary|TPose
-      takeName: Arm-Gary|TPose
-      internalID: 0
-      firstFrame: 0
-      lastFrame: 1
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 0
   meshes:
     lODScreenPercentages: []
