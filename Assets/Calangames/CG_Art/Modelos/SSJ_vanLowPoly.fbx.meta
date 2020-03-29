@@ -1,44 +1,8 @@
 fileFormatVersion: 2
-guid: 2db26aedc23828848bbe6da58c561911
+guid: 658b09f3d5162774ebf12ba655af13cc
 ModelImporter:
   serializedVersion: 19300
-  internalIDToNameTable:
-  - first:
-      74: 4776126667634646051
-    second: Arm-Gary|cleanAnim
-  - first:
-      74: 4988178750407703544
-    second: Arm-Gary|deathAnim
-  - first:
-      74: 2166892880501188634
-    second: Arm-Gary|IdleAnim
-  - first:
-      74: -8741845760594162074
-    second: Arm-Gary|jumpAnim
-  - first:
-      74: -7219769206822542389
-    second: Arm-Gary|PlaneAction
-  - first:
-      74: -4561671890860197871
-    second: Arm-Gary|runAnima
-  - first:
-      74: -2003948356396199795
-    second: Arm-Gary|TPose
-  - first:
-      74: 1769408565536515105
-    second: Arm-Gary|fallingAnim
-  - first:
-      74: 5089151977813665328
-    second: Arm-Gary|JumpAnim
-  - first:
-      74: 3580731697860607501
-    second: Arm-Gary|jumpingAnim
-  - first:
-      74: -109032497611280334
-    second: Arm-Gary|landingAnim
-  - first:
-      74: -1527683478413793485
-    second: Arm-Gary|landingAnim.001
+  internalIDToNameTable: []
   externalObjects: {}
   materials:
     materialImportMode: 1
