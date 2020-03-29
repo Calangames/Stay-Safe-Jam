@@ -30,6 +30,8 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.spatialBlend = s.spatialBlend;
             s.source.loop = s.loop;
+            
+            if (s.playOnAwake) { Play(s.name); }
         }
     }
 

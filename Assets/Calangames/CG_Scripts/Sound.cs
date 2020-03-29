@@ -16,6 +16,7 @@ public class Sound
     public float spatialBlend;
     
     public bool loop;
+    public bool playOnAwake;
 
     [HideInInspector]
     public AudioSource source;
