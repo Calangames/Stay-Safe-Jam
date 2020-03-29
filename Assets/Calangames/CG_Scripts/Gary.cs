@@ -10,6 +10,7 @@ public class Gary : MonoBehaviour
     public float gravityScale;
 
     private CharacterController characterController;
+    private Animator animator;
 
     private Vector3 moveDirection;
     private Vector2 position;
@@ -19,12 +20,15 @@ public class Gary : MonoBehaviour
     void Start ()
     {
         characterController = GetComponent<CharacterController>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Update()
     {
         if (followingCrowd)
         {
+            float movement = new Vector3(moveDirection.x, moveDirection.z).magnitude;
+            animator.SetBool("moving", movement != 0f);
             float y = moveDirection.y;
             moveDirection = new Vector3(Input.GetAxis("Horizontal") * playerSpeed, 0f, Input.GetAxis("Vertical") * playerSpeed);
 
@@ -43,6 +47,7 @@ public class Gary : MonoBehaviour
                 {
                     grounded = false;
                     moveDirection.y = jumpForce;
+                    animator.SetTrigger("jump");
                 }
             }
             else
@@ -71,6 +76,8 @@ public class Gary : MonoBehaviour
             }
         }
         characterController.Move(moveDirection * Time.deltaTime);
+        Vector3 lookDirection = new Vector3(moveDirection.x, 0f, moveDirection.z) + transform.position;
+        animator.transform.LookAt(lookDirection);
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit)
