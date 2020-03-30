@@ -21,7 +21,18 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        navMeshAgent.SetDestination(Crowd.instance.transform.position);
+        if (following)
+        {
+            navMeshAgent.SetDestination(Crowd.instance.transform.position);
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Crowd"))
+        {
+            following = true;
+        }
     }
 
     private IEnumerator RefreshPath()

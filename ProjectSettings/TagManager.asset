@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Gary
   - Crowd
+  - Enemy
+  - Broom
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - GaryBodyOnGround
   - GaryBodyOnAir
   - Gary Detector
-  - 
+  - Broom
   - 
   - 
   - 

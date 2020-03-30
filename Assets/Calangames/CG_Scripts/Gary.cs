@@ -8,13 +8,14 @@ public class Gary : MonoBehaviour
     public float runSpeed;
     public float jumpForce;
     public float gravityScale;
+    public GameObject broomPrefab;
 
     private CharacterController characterController;
     private Animator animator;
 
     private Vector3 moveDirection;
     private Vector2 position;
-    private bool headTowardsCenter, linked = true, grounded, followingCrowd;
+    private bool headTowardsCenter, linked = true, grounded, followingCrowd, dead;
     private float cameraDirection;
 
     void Start ()
@@ -25,8 +26,18 @@ public class Gary : MonoBehaviour
 
     void Update()
     {
+        if (dead)
+        {
+            return;
+        }
+
         if (followingCrowd)
         {
+            if (Input.GetMouseButtonDown(1))
+            {
+                Vector3 heightOffset = Vector3.up * 1.5f;
+                Instantiate(broomPrefab, transform.position + heightOffset + transform.forward, Quaternion.Euler(animator.transform.eulerAngles));
+            }
             float movement = new Vector3(moveDirection.x, moveDirection.z).magnitude;
             animator.SetBool("moving", movement != 0f);
             float y = moveDirection.y;
@@ -61,6 +72,10 @@ public class Gary : MonoBehaviour
 
     void LateUpdate()
     {
+        if (dead)
+        {
+            return;
+        }
         if (followingCrowd)
         {
             position = new Vector2(transform.position.x, transform.position.z);
@@ -82,12 +97,20 @@ public class Gary : MonoBehaviour
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
+        if (dead)
+        {
+            return;
+        }
         bool notHuggingWall = hit.normal.x > -0.2f && hit.normal.x < 0.2f && hit.normal.z > -0.2f && hit.normal.z < 0.2f;
         grounded = notHuggingWall && hit.normal.y > 0 && !hit.gameObject.CompareTag("Gary");
     }
 
     void OnTriggerEnter(Collider other)
     {
+        if (dead)
+        {
+            return;
+        }
         float distance = Vector2.Distance(position, Crowd.instance.Center);
         linked = distance <= Crowd.instance.maxDistance;
         if (other.CompareTag("Crowd"))
@@ -95,10 +118,20 @@ public class Gary : MonoBehaviour
             Crowd.instance.CrowdList.Add(transform);
             followingCrowd = true;
         }
+        else if (other.CompareTag("Enemy"))
+        {
+            dead = true;
+            Crowd.instance.CrowdList.Remove(transform);
+            animator.SetTrigger("death");
+        }
     }
 
     void OnTriggerExit(Collider other)
     {
+        if (dead)
+        {
+            return;
+        }
         if (followingCrowd && other.CompareTag("Crowd") && Crowd.instance.CrowdList.Count > 1)
         {
             Crowd.instance.CrowdList.Remove(transform);
