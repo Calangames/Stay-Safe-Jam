@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Broom : MonoBehaviour
 {
-    float speed = 30f, lifeInSeconds = 2f;
+    public int damage = 2;
+    public float speed = 30f, lifeInSeconds = 2f;
 
     private Rigidbody rb;
+    private bool canHit = true;
 
     // Start is called before the first frame update
     void Start()
@@ -23,14 +25,17 @@ public class Broom : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy"))
+        if (canHit && other.CompareTag("Enemy"))
         {
-            Destroy(other.gameObject);
+            other.GetComponentInParent<Enemy>().ReceiveDamage(damage);
+            Destroy(gameObject);
+            canHit = false;
         }
     }
 
     private void Destroy()
     {
         Destroy(gameObject);
+        canHit = false;
     }
 }
