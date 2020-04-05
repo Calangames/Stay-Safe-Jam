@@ -12,16 +12,17 @@ public class Gary : MonoBehaviour
 
     private CharacterController characterController;
     private Animator animator;
-
+    private SphereCollider detectorCollider;
     private Vector3 moveDirection;
     private Vector2 position;
-    private bool headTowardsCenter, linked = true, grounded, followingCrowd, dead;
+    private bool headTowardsCenter, linked = true, grounded, followingCrowd, dead, isOnList;
     private float cameraDirection;
 
     void Start ()
     {
         characterController = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
+        detectorCollider = GetComponentInChildren<SphereCollider>();
     }
 
     void Update()
@@ -80,14 +81,25 @@ public class Gary : MonoBehaviour
         {
             position = new Vector2(transform.position.x, transform.position.z);
             float distance = Vector2.Distance(position, Crowd.instance.Center);
-            linked = linked & distance <= Crowd.instance.maxDistance;
-            headTowardsCenter = distance > Crowd.instance.minDistance && !linked;
+            if (isOnList && Crowd.instance.CrowdList.Count > 1 && distance > Crowd.instance.maxDistance + detectorCollider.radius)
+            {
+                Crowd.instance.CrowdList.Remove(transform);
+                isOnList = false;
+                Crowd.instance.ChangeSize(-0.2f, -0.3f);
+                Debug.Log("removeu");
+            }
+            linked = linked & distance <= Crowd.instance.maxDistance + detectorCollider.radius;
+            headTowardsCenter = distance > Crowd.instance.minDistance + detectorCollider.radius && !linked;
 
             if (headTowardsCenter)
             {
                 Vector2 centerDirection = new Vector2(Crowd.instance.Center.x - transform.position.x, Crowd.instance.Center.y - transform.position.z);
                 centerDirection = centerDirection.normalized;
                 moveDirection = new Vector3(centerDirection.x * runSpeed, moveDirection.y, centerDirection.y * runSpeed);
+            }
+            else
+            {
+                linked = true;
             }
         }
         characterController.Move(moveDirection * Time.deltaTime);
@@ -111,30 +123,42 @@ public class Gary : MonoBehaviour
         {
             return;
         }
-        float distance = Vector2.Distance(position, Crowd.instance.Center);
-        linked = distance <= Crowd.instance.maxDistance;
-        if (other.CompareTag("Crowd"))
+        switch (other.tag)
         {
-            Crowd.instance.CrowdList.Add(transform);
-            followingCrowd = true;
-        }
-        else if (other.CompareTag("Enemy"))
-        {
-            dead = true;
-            Crowd.instance.CrowdList.Remove(transform);
-            animator.SetTrigger("death");
+            case "Crowd":
+                if (!isOnList)
+                {
+                    Crowd.instance.CrowdList.Add(transform);
+                    isOnList = true;
+                    followingCrowd = true;
+                    if (Crowd.instance.CrowdList.Count > 1)
+                    {
+                        Crowd.instance.ChangeSize(0.2f, 0.3f);
+                    }
+                }                
+                break;
+            case "Enemy":
+                dead = true;
+                Crowd.instance.CrowdList.Remove(transform);
+                isOnList = false;
+                animator.SetTrigger("death");
+                Crowd.instance.ChangeSize(-0.2f, -0.3f);
+                break;
+            default:
+                break;
         }
     }
 
-    void OnTriggerExit(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if (dead)
         {
             return;
         }
-        if (followingCrowd && other.CompareTag("Crowd") && Crowd.instance.CrowdList.Count > 1)
+        float distance = Vector2.Distance(position, Crowd.instance.Center);
+        if (other.CompareTag("Gary"))
         {
-            Crowd.instance.CrowdList.Remove(transform);
+            linked = distance <= Crowd.instance.maxDistance + detectorCollider.radius;
         }
     }
 }

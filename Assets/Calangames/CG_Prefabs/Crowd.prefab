@@ -75,7 +75,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 8
+  m_Radius: 6
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5137245106209728431
 MonoBehaviour:
@@ -90,8 +90,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 15
-  minDistance: 3
-  maxDistance: 8
+  minDistance: 4
+  maxDistance: 6
   recenterDuration: 0.2
   cameraPivot: {fileID: 6617069404806524199}
   startingGary: {fileID: 0}

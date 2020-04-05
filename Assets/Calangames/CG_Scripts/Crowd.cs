@@ -13,6 +13,7 @@ public class Crowd : MonoBehaviour
     public Vector2 Center { get; set; }
     public List<Transform> CrowdList { get; set; }
 
+    private SphereCollider sphereCollider;
     private Vector3 velocity;
     private Vector3 moveDirection;
     private float cameraDirection;
@@ -22,6 +23,7 @@ public class Crowd : MonoBehaviour
         instance = this;
         Center = new Vector2(transform.position.x, transform.position.z);
         CrowdList = new List<Transform>();
+        sphereCollider = GetComponent<SphereCollider>();
     }
 
     void Start ()
@@ -49,5 +51,12 @@ public class Crowd : MonoBehaviour
         }    
 
         Center = new Vector2(transform.position.x, transform.position.z);
+    }
+
+    public void ChangeSize(float minDistanceIncrement, float maxDistanceIncrement)
+    {
+        minDistance += minDistanceIncrement;
+        maxDistance += maxDistanceIncrement;
+        sphereCollider.radius += maxDistanceIncrement;
     }
 }
